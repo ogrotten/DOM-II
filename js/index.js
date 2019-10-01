@@ -7,6 +7,7 @@ const welcome = document.querySelector(".intro h2");
 welcome.tog = 0;
 const logoHead = document.querySelector(".logo-heading");
 const introtext = document.querySelector(".intro p");
+const nolink = document.querySelector("a.nav-link");
 
 const sectHead = document.querySelectorAll(".text-content h2");
 const buttons = document.querySelectorAll(".btn");
@@ -14,12 +15,15 @@ const destination = document.querySelectorAll(".destination");
 const foot = document.querySelector("footer");
 const body = document.querySelector("body");
 
-// footer
 body.addEventListener("click", e => {
-	e.target.style = `background-color: rgb(${rnd255()}, ${rnd255()}, ${rnd255()})`;
+	body.style = `background-color: rgb(${rnd255()}, ${rnd255()}, ${rnd255()})`;
 });
+
+
+// footer
 foot.addEventListener("click", e => {
 	e.target.style = `background-color: rgb(${rnd255()}, ${rnd255()}, ${rnd255()})`;
+	e.stopPropagation();
 });
 
 // welcome
@@ -37,7 +41,7 @@ logoHead.addEventListener("mousemove", e => {
 
 // introtext
 introtext.addEventListener("mousemove", e => {
-	e.target.style = `transform: rotate(${e.offsetX}deg)`;
+	e.target.style = `transform: rotate(${e.offsetX*.2}deg)`;
 });
 introtext.addEventListener("click", e => {
 	e.target.style = `transform: none`;
@@ -84,6 +88,10 @@ destination.forEach(e1 => {
 		e2.target.style.textAlign = `left`;
 		e2.target.style.backgroundColor = `white`;
 	});
+});
+
+nolink.addEventListener("click", e => {
+	e.preventDefault();
 });
 
 // -----------------
